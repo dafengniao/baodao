@@ -140,20 +140,6 @@
         /** 
          *  加载
         **/
-        var basePath = location.href;
-        var loader = new WxMoment.Loader();
-        //声明资源文件列表
-        var fileList = ['images/UGKDMGre.jpg', 'images/qcZG7NG3.jpg', 'images/alogo.png', 'images/year.png','images/2wa.png','images/anmat_2.png','images/anmat_3.png','images/anmat_4.png','images/anmat_5.png'];
-
-        for (var i = 0; i < fileList.length; i++) {
-          loader.addImage(basePath + fileList[i]);
-        }
-        loader.addCompletionListener(function () {
-        //可以在这里隐藏 Loading 页面开始进入主内容页面
-        });
-        //启动加载
-        loader.start();
-
         function timedCount(num){
           num++;
           percent = num;
