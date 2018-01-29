@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="./main.css">
     <script src="./js/wxmoment.min.js"></script>
   </head>
-
   <body>
     <!-- 加载 -->
     <div class="loading">
@@ -133,12 +132,35 @@
         /**
           * 微信浏览器加载音乐
          */
-        document.addEventListener("WeixinJSBridgeReady", function () {
+        function is_weixn(){ 
+          var ua = navigator.userAgent.toLowerCase(); 
+          if(ua.match(/MicroMessenger/i)=="micromessenger") { 
+            return true; 
+          } else { 
+            return false; 
+          } 
+        } 
+        if( is_weixn() ){
+          document.addEventListener("WeixinJSBridgeReady", function () {
+            var audio = new Audio();
+            audio.src = "./music.mp3",
+            audio.loop = true,
+            audio.play();
+          }, false);
+        }else{
           var audio = new Audio();
           audio.src = "./music.mp3",
           audio.loop = true,
           audio.play();
-        }, false);
+        }
+        // 是否PC 打开
+        function is_pc(){
+          if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            return false
+          } else {
+            return true
+          }
+        }
         /** 
          *  加载
         **/
@@ -166,7 +188,7 @@
         var tab2 = false; // check默认未选中
 
         // 横屏提示
-        new WxMoment.OrientationTip();
+        //new WxMoment.OrientationTip();
         var pageSlider = new WxMoment.PageSlider({
           pages: $('.screen'),            //必需，需要切换的所有屏
           direction: 'vertical',          //可选，vertical 或 v 为上下滑动，horizontal 或 h 为左右滑动，默认为 vertical
@@ -186,29 +208,41 @@
           onSwipeLeft: function () {},    //可选，swipeLeft 回调
           onSwipeRight: function () {}    //可选，swipeRight 回调
         });
-        function swipePage(num){
-          $('.screen'+num).swipeUp(function(){
-            pageSlider.moveTo(num, true)
-          })
-          $('.screen'+num).swipeDown(function(){
-            pageSlider.moveTo(num - 2, true)
-          })
+        if( !is_pc() ){
+          console.log('手机')
+          function swipePage(num){
+            $('.screen'+num).swipeUp(function(){
+              pageSlider.moveTo(num, true)
+            })
+            $('.screen'+num).swipeDown(function(){
+              pageSlider.moveTo(num - 2, true)
+            })
+          }
+        }else{
+          console.log('PC')
+          $('.page_all').css({"-webkit-transform-origin":top,"transform-origin":top,"-webkit-transform":"scale(1);","transform":"Scale(1);","transform":"scale(1)"});
+          function swipePage(num){
+            $('.screen'+num).click(function(){
+              pageSlider.moveTo(num, true)
+            })
+          }
         }
         swipePage(1);
         swipePage(2);
         swipePage(3);
         swipePage(4);
-        $('.screen4 .btm,.apply').tap(function(){
+        
+        $('.screen4 .btm,.apply').click(function(){
           pageSlider.moveTo(4, true)
         })
-        $('.view_show').tap(function(){
+        $('.view_show').click(function(){
           $('.model').show(300)
         })
-        $('.close').tap(function(){
+        $('.close').click(function(){
           $('.model').hide(300)
         })
         // 点击获取验证码
-        $('.weui-cell__ft').tap(function(){
+        $('.weui-cell__ft').click(function(){
           var phone = $('.phone').val();
           var status = $('.weui-cell__ft').data('disabled');
           if( !status ){
@@ -259,7 +293,7 @@
       // 该手机号已领取
       $('.hasmodel').show(300);
       // 关闭提示
-      $('.hasmodel').tap(function(){
+      $('.hasmodel').click(function(){
         $(this).hide();
       })
 
