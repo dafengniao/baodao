@@ -106,6 +106,8 @@
           <div class="tab2" data-tap="false"></div>
           <img class="tab_2" src="./images/check.png" />
           <img class="submit" src="./images/submit.png" />
+          <!-- 已领取弹窗 -->
+          <img src="./images/tip.png" class="hasmodel" />
         </section>
       </div>
     </div>
@@ -254,6 +256,13 @@
           }
         })
       })
+      // 该手机号已领取
+      $('.hasmodel').show(300);
+      // 关闭提示
+      $('.hasmodel').tap(function(){
+        $(this).hide();
+      })
+
       // 获取验证码 倒计时
       function getTime(currentTime,idname){
         this.currentTime = parseInt(currentTime);
