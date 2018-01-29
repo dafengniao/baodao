@@ -6,7 +6,6 @@
     <title>你是否记得，十年前的自己</title>
     <link rel="stylesheet" type="text/css" href="./main.css">
     <script src="//wximg.qq.com/wxp/libs/wxmoment/0.0.4/wxmoment.min.js"></script>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   </head>
 
   <body>
@@ -76,7 +75,7 @@
           <div class="view_show"></div> <!-- 详情 -->
           <div class="view_show tap"></div>
           <!-- 详情model -->
-          <img src="./images/WechatIMG258.jpeg" class="model" />
+          <img src="./images/WechatIMG258.jpg" class="model" />
           <div class="close"></div>
           <img src="./images/KhUaytVd.png" class="content" />
           <input class="name" placeholder="姓名" />
@@ -110,6 +109,7 @@
         </section>
       </div>
     </div>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
         // 放大元素,按照320x504定位,按比例scale
@@ -148,7 +148,7 @@
           
           // 设置条件使停止计时
           if (num<100) {
-              var t = setTimeout(function(){timedCount(num)},30); // 30  百分比时间
+              var t = setTimeout(function(){timedCount(num)},0); // 30  百分比时间
           }else{
             $('.loading').remove();
             $('.wrap').show(500);
