@@ -180,7 +180,12 @@
             $('.tab2').css({'top': '742px','left': '112px'})
             $('.tab_2').css({'top': '744px','left': '118px'})
             $('.view_show.tap').css({'top':'706px','left':'152px'})
-            $('.small,.big,.redio').css('top','29.5%')
+            $('.small,.big,.redio').css('top','29.5%');
+            $('.screen3 .year').css('top','300px');
+            $('.screen3 .animation_text').css('top','486px');
+            $('.animation_pto').css('top','608px');
+            $('.screen4 .bg').css('height','100%');
+            $('.screen4 .animation_text').css('top','335px')
           } else {
             return false
           }
@@ -244,7 +249,8 @@
             })
           }
         }else{
-          console.log('PC')
+          console.log('PC');
+          $('.screen.screen5').css('overflow','scroll'); // PC 提交页超出可滑动
           $('.page_all').css({"-webkit-transform-origin":top,"transform-origin":top,"-webkit-transform":"scale(1);","transform":"Scale(1);","transform":"scale(1)"});
           function swipePage(num){
             $('.screen'+num).click(function(){
