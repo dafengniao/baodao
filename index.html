@@ -3,6 +3,7 @@
   <head>
     <meta name="viewport" content="width=640,user-scalable=no">
     <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>你是否记得，十年前的自己</title>
     <link rel="stylesheet" type="text/css" href="./main.css">
     <script src="./js/wxmoment.min.js"></script>
@@ -161,6 +162,30 @@
             return true
           }
         }
+        function is_huawei(){
+          if(/HUAWEI/i.test(navigator.userAgent)) {
+            $('body').css('width','100%');
+            $('.page_all').css({"-webkit-transform-origin":"bottom","transform-origin":"bottom","-webkit-transform":"scale(1);","transform":"scale(1);","transform":"scale(1)"});
+            $('.content').css({'top':'100px','width':'400px','height':'694px','left':'120px'})
+            $('.submit').css('top','820px');
+            $('.name').css('top','373px');
+            $('.phone').css('top','503px');
+            $('select').css({'width':'400px','padding-left':'188px','left':'104px','top':'438px'});
+            $('.number').css('top','570px');
+            $('.checkNum').css({'top':'570px','left':'380px'});
+            $('.code').css('top','635px');
+            $('.weui-cell__ft').css({'top':'635px','left':'320px'});
+            $('.tab1').css({'top': '700px','left': '112px'})
+            $('.tab_1').css({'top': '704px','left': '118px'})
+            $('.tab2').css({'top': '742px','left': '112px'})
+            $('.tab_2').css({'top': '744px','left': '118px'})
+            $('.view_show.tap').css({'top':'706px','left':'152px'})
+            $('.small,.big,.redio').css('top','29.5%')
+          } else {
+            return false
+          }
+        }
+        is_huawei()
         /** 
          *  加载
         **/
