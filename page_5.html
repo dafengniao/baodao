@@ -23,61 +23,14 @@
     </div>
     <div class="page_all">
       <div class="wrap">
-        <section class="screen screen1" data-lock-next="true">
-          <img src="./images/UGKDMGre.jpg" class="bg sc_1" />
-          <img src="./images/qcZG7NG3.jpg" class="btm sc_btm" />
-          <img src="./images/alogo.png" class="logo" />
-          <img src="./images/year.png" class="year" />
-          <img src="./images/2wa.png" class="year_txt" />
-          <img src="./images/aM946tl4.png" class="animation_1" />
-          <img src="./images/anmat_2.png" class="animation_2" />
-          <img src="./images/anmat_3.png" class="animation_3" />
-          <img src="./images/anmat_4.png" class="animation_4" />
-          <img src="./images/anmat_5.png" class="animation_5" />
-          <img src="./images/swipe.png" class="swipe" />
-        </section>
-        <section class="screen screen2" data-lock-prev="true" data-lock-next="true">
-          <img src="./images/vd8JL8FB.jpg" class="bg">
-          <img src="./images/qcZG7NG3.jpg" class="btm no_opc" />
-          <img src="./images/alogo.png" class="logo no_opc" />
-          <img src="./images/year.png" class="year" />
-          <img src="./images/22wa.png" class="year_txt" />
-          <img src="./images/anmat_5.png" class="animation_1 an_6" />
-          <img src="./images/anmat_2.png" class="animation_2" />
-          <img src="./images/anmat_3.png" class="animation_3" />
-          <img src="./images/anmat_4.png" class="animation_4" />
-          <img src="./images/anmat_5.png" class="animation_5" />
-          <img src="./images/swipe.png" class="swipe" />
-        </section>
-        <section class="screen screen3" data-lock-prev="true" data-lock-next="true">
-          <img src="./images/Fhb1doY5.jpg" class="bg">
-          <img src="./images/qcZG7NG3.jpg" class="btm no_opc" />
-          <img src="./images/alogo.png" class="logo no_opc" />
-          <img src="./images/year.png" class="year" />
-          <img src="./images/anmat_5.png" class="animation_1 an_6" />
-          <img src="./images/anmat_3.png" class="animation_3 an_6" />
-          <img src="./images/anmat_4.png" class="animation_4" />
-          <img src="./images/uFayM0Yl.png" class="animation_text" />
-          <img src="./images/FHswC1Gl.png" class="animation_pto" />
-          <img src="./images/swipe.png" class="swipe" />
-        </section>
-        <section class="screen screen4" data-lock-prev="true" data-lock-next="true">
-          <img src="./images/rJG56fDi.jpg" class="bg">
-          <img src="./images/TXSoJjOc.jpg" class="btm no_opc" />
-          <img src="./images/anmat_6.png" class="animation_text" />
-          <img src="./images/logo.png" class="logo no_opc last" />
-          <img src="./images/apply.png" class="apply" />
-        </section>
-
         <section class="screen screen5" data-lock-prev="true">
           <img src="./images/nc8gETmG.jpg" class="bg" />
-          <div class="socrll" style="height: 100%;width: 100%;position: absolute;left: 0;">
           <img src="./images/baodao.jpg" class="baodao" />
           <img src="./images/logo.png" class="logo no_opc last" />
           <div class="view_show"></div> <!-- 详情 -->
           <div class="view_show tap"></div>
           <!-- 详情model -->
-          <img src="./images/huodong3.jpg" class="model" />
+          <img src="./images/WechatIMG258.jpg" class="model" />
           <div class="close"></div>
           <img src="./images/KhUaytVd.png" class="content" />
           <input class="name" placeholder="姓名" />
@@ -86,7 +39,7 @@
             <option value="北京">北京</option>
             <option value="成都">成都</option>
             <option value="大连">大连</option>
-            <option value="广州市市">广州市市</option>
+            <option value="广州">广州</option>
             <option value="哈尔滨">哈尔滨</option>
             <option value="杭州">杭州</option>
             <option value="南京">南京</option>
@@ -109,8 +62,7 @@
           <img class="tab_2" src="./images/check.png" />
           <img class="submit" src="./images/submit.png" />
           <!-- 已领取弹窗 -->
-          <img src="./images/tip2.png" class="hasmodel" />
-        </div>
+          <img src="./images/tip.png" class="hasmodel" />
         </section>
       </div>
     </div>
@@ -141,6 +93,7 @@
         }else{
           scaleEle(".page_all","center");
         }
+
         /**
           * 微信浏览器加载音乐
          */
@@ -216,7 +169,8 @@
               var t = setTimeout(function(){timedCount(num)},30); // 30  百分比时间
           }else{
             $('.loading').remove();
-            $('.wrap').show(500);
+            $('.wrap').show(500).css('height',$('body').height());
+            $('.screen').addClass('current');
             $('.sc_1').css({'left':'0','transition':'left 0.5s'});
             $('.logo').css({'left':'42px','transition':'left 0.5s'})
             $('.sc_btm').css({'opacity':'1','transition':'opacity 2s'})
@@ -269,21 +223,16 @@
             })
           }
         }
-        swipePage(1);
-        swipePage(2);
-        swipePage(3);
-        swipePage(4);
+        
         
         $('.screen4 .btm,.apply').click(function(){
           pageSlider.moveTo(4, true)
         })
         $('.view_show').click(function(){
           $('.model').show(300)
-          $('.close').show(300)
         })
         $('.close').click(function(){
           $('.model').hide(300)
-          $('.close').hide(300)
         })
         // 点击获取验证码
         $('.weui-cell__ft').click(function(){
@@ -320,13 +269,6 @@
         })
         $('select').change(function(){
           console.log($(this).val())
-          if( $(this).val().length == 3 ){
-            $(this).css('padding-left','174px')
-          }else if( $(this).val().length == 2 ){
-            $(this).css('padding-left','200px')
-          }else if( $(this).val().length == 4 ) {
-            $(this).css('padding-left','152px')
-          }
         })
         // 提交
         $('.submit').click(function(){
@@ -347,25 +289,6 @@
       $('.hasmodel').click(function(){
         $(this).hide();
       })
-
-      
-      if(/Android/i.test(navigator.userAgent))  {
-        //alert(123)
-        $('input').focus(function(){
-          window.addEventListener("resize", function() {
-            if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
-              window.setTimeout(function() {
-                document.activeElement.scrollIntoViewIfNeeded();
-                //document.activeElement.scrollIntoView()
-              },0);
-            }
-          })
-        })
-        $('.code,.number,.phone').blur(function(){
-          $('.socrll').css('top','140px')
-        })
-      }
-      
 
       // 获取验证码 倒计时
       function getTime(currentTime,idname){
